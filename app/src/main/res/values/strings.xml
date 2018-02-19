@@ -2,4 +2,6 @@
     <string name="app_name">FeedNews</string>
     <string name="news_title">Murdoches needed counselling after hacking scandal</string>
     <string name="news_desc">NEW YARK : The British phone-hacking scandal brought simmering tensions</string>
+    <string name="please_connect">Please connect to network</string>
+    <string name="network_error">Network error, please swipe down to refresh</string>
 </resources>

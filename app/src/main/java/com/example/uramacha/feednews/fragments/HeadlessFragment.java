@@ -1,4 +1,4 @@
-package com.example.uramacha.feednews;
+package com.example.uramacha.feednews.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -6,13 +6,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 
+import com.example.uramacha.feednews.main.view.MainActivity;
+
 /**
  * Fragment is used to handle the orientation changes
  */
 
 public class HeadlessFragment extends Fragment {
 
-    private String TAG = getClass().getSimpleName();
+    private final String TAG = getClass().getSimpleName();
 
     private Context context;
 
@@ -29,7 +31,7 @@ public class HeadlessFragment extends Fragment {
 
         setRetainInstance(true);
 
-        ((MainActivity)context).callFeedService();
+        ((MainActivity)context).startTask();
     }
 
 

@@ -1,8 +1,7 @@
-package com.example.uramacha.feednews;
+package com.example.uramacha.feednews.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +9,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.uramacha.feednews.R;
 
 import java.util.ArrayList;
 
 /**
- * CustomAdapter to populate the item into recyclerview
+ * CustomAdapter class to populate the item into recyclerview
  */
 
 public class CustomFeedAdapter extends RecyclerView.Adapter<CustomFeedAdapter.MyViewHolder> {
@@ -22,8 +22,6 @@ public class CustomFeedAdapter extends RecyclerView.Adapter<CustomFeedAdapter.My
     private final Context context;
 
     private final ArrayList<FeedItem> allFeedItems;
-
-    private final String TAG = getClass().getSimpleName();
 
     public CustomFeedAdapter(Context context, ArrayList<FeedItem> allFeedItems) {
         this.context = context;
@@ -44,7 +42,6 @@ public class CustomFeedAdapter extends RecyclerView.Adapter<CustomFeedAdapter.My
         Glide.with(context)
                 .load(allFeedItems.get(position).getImagehref())
                 .into(holder.image);
-        Log.d(TAG, "onBindViewHolder " + allFeedItems.get(position).getImagehref());
     }
 
     @Override

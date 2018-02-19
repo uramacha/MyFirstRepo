@@ -17,7 +17,7 @@ public class AppController extends Application {
         return mInstance;
     }
 
-    RequestQueue mRequestQueue;
+    public RequestQueue mRequestQueue;
 
     @Override
     public void onCreate() {

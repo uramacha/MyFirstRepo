@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/listitem_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/list_item_background"
     android:clickable="true"
     android:orientation="vertical">
 
@@ -22,7 +22,7 @@
             android:maxLines="2"
             android:text="@string/news_title"
             android:textColor="@color/colorPrimary"
-            android:textSize="22dp"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <RelativeLayout
@@ -69,7 +69,7 @@
                 android:fontFamily="serif"
                 android:lines="3"
                 android:text="@string/news_desc"
-                android:textSize="18dp" />
+                android:textSize="18sp" />
 
         </RelativeLayout>
     </LinearLayout>
