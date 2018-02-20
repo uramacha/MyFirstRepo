@@ -183,7 +183,6 @@ public class MainActivity extends AppCompatActivity implements MainView, SwipeRe
     }
 
 
-    @Override
     public void startTask() {
         mainPresenter.startTask();
     }

@@ -108,8 +108,8 @@ public class MainInteractorImpl implements MainInteractor {
                 }
 
                 FeedItem feedItemModel = new FeedItem(title, description, imageHref);
-
-                allFeedItems.add(feedItemModel);
+                if (isVallidFeed(feedItemModel))
+                    allFeedItems.add(feedItemModel);
             }
 
 
@@ -121,4 +121,11 @@ public class MainInteractorImpl implements MainInteractor {
         return allFeedItems;
     }
 
+
+    private boolean isVallidFeed(FeedItem feedItem) {
+
+        return !(feedItem.getTitle().equalsIgnoreCase("null") &&
+                feedItem.getDescription().equalsIgnoreCase("null") &&
+                feedItem.getImagehref().equalsIgnoreCase("null"));
+    }
 }

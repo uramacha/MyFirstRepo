@@ -2,6 +2,7 @@ package com.example.uramacha.feednews.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,11 +41,25 @@ public class CustomFeedAdapter extends RecyclerView.Adapter<CustomFeedAdapter.My
     @Override
     public void onBindViewHolder(CustomFeedAdapter.MyViewHolder holder, int position) {
 
-        holder.textTitle.setText(allFeedItems.get(position).getTitle());
-        holder.textPlaceDesc.setText(allFeedItems.get(position).getDescription());
+        String title = allFeedItems.get(position).getTitle();
+        String desc = allFeedItems.get(position).getDescription();
+        String imageRef = allFeedItems.get(position).getImagehref();
+
+        if (title.equalsIgnoreCase("null"))
+            holder.textTitle.setText("");
+        else
+            holder.textTitle.setText(title);
+
+        if (desc.equalsIgnoreCase("null"))
+            holder.textPlaceDesc.setText("");
+        else
+            holder.textPlaceDesc.setText(desc);
+
+
         Glide.with(context)
-                .load(allFeedItems.get(position).getImagehref())
+                .load(imageRef)
                 .into(holder.image);
+
     }
 
     @Override

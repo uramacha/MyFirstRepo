@@ -10,8 +10,6 @@ import java.util.ArrayList;
 
 public interface MainView {
 
-    void startTask();
-
     void showRefreshLayout();
 
     void hideRefreshLayout();
