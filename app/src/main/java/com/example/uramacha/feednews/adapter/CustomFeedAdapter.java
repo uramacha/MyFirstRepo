@@ -13,6 +13,9 @@ import com.example.uramacha.feednews.R;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * CustomAdapter class to populate the item into recyclerview
  */
@@ -51,24 +54,21 @@ public class CustomFeedAdapter extends RecyclerView.Adapter<CustomFeedAdapter.My
     }
 
 
-    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class MyViewHolder extends RecyclerView.ViewHolder {
 
-        final TextView textTitle;
-        final TextView textPlaceDesc;
-        final ImageView image;
+        @BindView(R.id.textTitle)
+        TextView textTitle;
+        @BindView(R.id.descAndPlace)
+        TextView textPlaceDesc;
+        @BindView(R.id.image)
+        ImageView image;
 
         MyViewHolder(View view) {
             super(view);
-            textTitle = (TextView) view.findViewById(R.id.textTitle);
-            textPlaceDesc = (TextView) view.findViewById(R.id.descAndPlace);
-            image = (ImageView) view.findViewById(R.id.image);
-            view.setOnClickListener(this);
+
+            ButterKnife.bind(this, view);
         }
 
-        @Override
-        public void onClick(View v) {
-
-        }
     }
 
 

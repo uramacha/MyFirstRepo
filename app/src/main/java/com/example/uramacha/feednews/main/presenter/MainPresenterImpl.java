@@ -53,5 +53,10 @@ public class MainPresenterImpl implements MainPresenter {
     @Override
     public void showNetworkError() {
         mainView.showNetworkError();
+}
+
+    @Override
+    public void onDestroy() {
+        mainView = null;
     }
 }

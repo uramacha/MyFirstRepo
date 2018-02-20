@@ -20,5 +20,7 @@ public interface MainPresenter {
 
     void onLoadData(ArrayList<FeedItem> allItems);
 
+	void onDestroy();
+
     void showNetworkError();
 }

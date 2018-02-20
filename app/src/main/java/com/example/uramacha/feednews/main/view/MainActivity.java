@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.example.uramacha.feednews.R;
@@ -20,6 +19,9 @@ import com.example.uramacha.feednews.main.presenter.MainPresenter;
 import com.example.uramacha.feednews.main.presenter.MainPresenterImpl;
 
 import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static com.example.uramacha.feednews.Utils.FRAGMENT_TAG;
 import static com.example.uramacha.feednews.Utils.KEY_OBJECT;
@@ -36,8 +38,10 @@ public class MainActivity extends AppCompatActivity implements MainView, SwipeRe
 
     private String TAG = getClass().getSimpleName();
 
-    private RecyclerView recyclerView;
-    private SwipeRefreshLayout refreshLayout;
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
+    @BindView(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout refreshLayout;
 
     private ArrayList<FeedItem> allFeedItems = new ArrayList<>();
     private String title = "";
@@ -50,15 +54,11 @@ public class MainActivity extends AppCompatActivity implements MainView, SwipeRe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.feeds_activity);
 
+        ButterKnife.bind(this);
 
         if (!isConnected(this)) {
             Toast.makeText(this, R.string.please_connect, Toast.LENGTH_SHORT).show();
         }
-
-
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        refreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
-
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -165,7 +165,11 @@ public class MainActivity extends AppCompatActivity implements MainView, SwipeRe
 
     @Override
     public void loadNewsFeed(ArrayList<FeedItem> allItems) {
-        Log.d(TAG, "loadNewsFeed ");
+
+        if (allItems == null || allItems.size() == 0) {
+            showNetworkError();
+        }
+
         allFeedItems = allItems;
         adapter = new CustomFeedAdapter(MainActivity.this, allFeedItems);
         recyclerView.setAdapter(adapter);
@@ -193,6 +197,12 @@ public class MainActivity extends AppCompatActivity implements MainView, SwipeRe
     @Override
     public void updateActionBar(String str) {
         getSupportActionBar().setTitle(str);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mainPresenter.onDestroy();
     }
 
     @Override
